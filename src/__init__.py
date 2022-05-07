@@ -2,8 +2,9 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 
-# init SQLAlchemy 
+# init SQLAlchemy
 db = SQLAlchemy()
+
 
 def create_app():
     app = Flask(__name__)
@@ -16,7 +17,6 @@ def create_app():
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
     db.init_app(app)
-
 
     # blueprint for non-auth parts of app
     from .main import main as main_blueprint
