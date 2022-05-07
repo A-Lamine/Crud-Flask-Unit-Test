@@ -9,7 +9,7 @@ main = Blueprint('main', __name__)
 @main.route('/')
 def movie():
     all_data = Video.query.all()
-    return render_template("movies.html", movies=all_data)
+    return render_template("movies.py", movies=all_data)
 
 
 @main.route('/insert', methods=['POST'])
