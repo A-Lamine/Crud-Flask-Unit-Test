@@ -1,27 +1,30 @@
+from pyexpat import model
 import requests
+
 
 Get = requests.get('http://127.0.0.1:5000/').status_code
 if Get == 200:
-    print(Get, "Le test est ok ✅")
+    print(Get, "Le Get est ok ✅")
 else:
-    print(Get, "Le test est ko ❌")
+    print(Get, "Le Get est ko ❌")
 
 Post = requests.post('http://127.0.0.1:5000/insert',
-                     json={'url': 'Adventure', 'title': 'Wonder Woman'}).status_code
+                     json={'url': 'www.Youtube.com', 'title': 'Youtube'}).status_code
 if Post == 201:
-    print(Post, "Le test est ok ✅")
+    print(Post, "Le Post est ok ✅")
 else:
-    print(Post, "Le test est ko ❌")
+    print(Post, "Le Post est ko ❌")
 
 Put = requests.put('http://127.0.0.1:5000/update',
-                   json={'id': 1, 'url': 'AdventureUpdate', 'title': 'Wonder Woman'}).status_code
+                   json={'id': 1, 'url': 'YoutubeUpdate', 'title': 'Youtube'}).status_code
 if Put == 200:
-    print(Put, "Le test est ok ✅")
+    print(Put, "Le Put est ok ✅")
 else:
-    print(Put, "Le test est ko ❌")
+    print(Put, "Le Put est ko ❌")
 
 Delete = requests.delete('http://127.0.0.1:5000/delete/1/').status_code
 if Delete == 200:
-    print(Delete, "Le test est ok ✅")
+    print(Delete, "Le Delete est ok ✅")
 else:
-    print(Delete, "Le test est ko ❌")
+    print(Delete, "Le Delete est ko ❌")
+
