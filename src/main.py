@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for, request, flash, Response
+from flask import Blueprint, render_template, redirect, url_for, request, flash, jsonify
 from . import db
 from .models import Video
 
@@ -6,7 +6,7 @@ from .models import Video
 main = Blueprint('main', __name__)
 
 
-@main.route('/')
+@main.route('/', methods=['GET'])
 def movie():
     all_data = Video.query.all()
     return render_template("movies.py", movies=all_data)
@@ -34,7 +34,13 @@ def insert():
         my_data = Video(url=lien, title=title)
         db.session.add(my_data)
         db.session.commit()
-        return Response("Movie added", 201, mimetype='application/json')
+        data = {
+            "Movie added": "✅",
+            "ID" : my_data.id,
+            "Url" : my_data.url,
+            "title" : my_data.title
+        }
+        return jsonify(data), 201
 
 
 @main.route('/update', methods=['POST', 'PUT'])
@@ -60,8 +66,14 @@ def update():
         my_data.url = request_data['url']
         my_data.title = request_data['title']
         db.session.commit()
+        data = {
+            "Movie Updated" : "✅",
+            "ID" : my_data.id,
+            "Url" : my_data.url,
+            "title" : my_data.title
+        }
 
-        return Response("Movie Updated", status=200)
+        return  jsonify(data),200
 
 
 @main.route('/delete/<int:id>/', methods=['GET', 'DELETE'])
@@ -74,5 +86,10 @@ def delete(id):
         flash("Movie Deleted Successfully")
         return redirect(url_for('main.movie'))
     else:
-        response = Response("Movie Deleted", status=200)
-        return response
+        data = {
+            "Movie Deleted" : "✅",
+            "ID" : my_data.id,
+            "Url" : my_data.url,
+            "title" : my_data.title
+        }
+        return jsonify(data)
