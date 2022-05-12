@@ -1,7 +1,7 @@
 # Flask API With Unit Test
 
 <h1 align="center">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Flask_logo.svg/1200px-Flask_logo.svg.png">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Flask_logo.svg/1200px-Flask_logo.svg.png" style="background:white; border-radius:20px">
 </h1>
 
 ## How to clone and use Project :
